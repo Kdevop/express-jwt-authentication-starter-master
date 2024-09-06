@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 const router = require('express').Router();   
 const User = mongoose.model('User');
-const passport = require('passport');
+//const passport = require('passport');
 const utils = require('../lib/utils');
 
 // OK, so this how where you do your session middleware, as in do the protected routes work. the passport.authenticate you will need to add this to every route you want to protect. 
-router.get('/protected', passport.authenticate('jwt', {session: false}), (req, res, next) => {
+router.get('/protected', utils.authMiddleware, (req, res, next) => {
+    console.log(req.jwt);
     res.status(200).json({ success: true, msg: 'You are authorized. '});
 });
 
