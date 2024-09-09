@@ -58,7 +58,7 @@ router.post('/register', function(req, res, next){
 
             const jwt = utils.issueJWT(user);
 
-            res.json({ success: true, user: user, token: jwt.token, expiresIn: jwt.expires }); //in this line we issue a jwt token.
+            res.json({ success: true, user: user, token: jwt.token, expiresIn: jwt.expires }); //in this line we issue a jwt token that is sent to the client. 
         })
         .catch(err => next(err));
 });

@@ -33,6 +33,7 @@ export class RegisterComponent implements OnInit {
       
       // The response data
       (response) => {
+        this.authService.setLocalStorage(response) // not sure why mine is not working here, I can check is completed, but essenitally, call the react component that is storing the JWT. 
         console.log(response);
       },
 
